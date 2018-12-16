@@ -9,7 +9,9 @@ class App extends Component {
     this.state = {
       quotes: [],
       colors: ['#000033', '#696969', 
-        '#c0ffee', '#b7410e', '#4d3c63']
+        '#c0ffee', '#b7410e', '#4d3c63'],
+      quoteIndex: 1,
+      colorIndex: 1
     }
   }
   
@@ -27,27 +29,20 @@ class App extends Component {
         
   }
 
-  randomQuote = (x) => {
-    return this.state.quotes[x];
-  }
-
-  randomColor = (x) => {
-    return this.state.colors[x];
-  }
-
-  handleNewQuote = () => {
-   return this.state.quotes[Math.floor(Math.random() * this.state.quotes.length) + 1];
-  }
-
-  handleNewColor = () => {
-    return this.state.colors[Math.floor(Math.random() * this.state.colors.length) + 1];
+  handleNew = () => {
+    this.setState({
+      quoteIndex: Math.floor(Math.random() * this.state.quotes.length),
+      colorIndex: Math.floor(Math.random() * this.state.colors.length)
+    })
+    
   }
 
   render() {
-    let x = 1;
+    let { colors, colorIndex, quotes, quoteIndex } = this.state;
     return (
       <div className="App">
-        <Card quote={this.handleNewQuote()} color={this.handleNewColor()} />
+        <Card quote={quotes[quoteIndex]} colors={colors[colorIndex]} />
+        <button onClick={this.handleNew}>click meh</button>
       </div>
     );
   }
