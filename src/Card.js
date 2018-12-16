@@ -1,9 +1,14 @@
 import React from 'react';
 
 const Card = props => {
-    console.log(props)
+    let style = `color: ${props.colors}`
+    const { colors, quote } = props;
+    console.log(props.colors)
     return (
-        <h1>hi</h1>
+        <div className="container">
+        <h1 style={{color: `${colors}`}}>{props.data.quote}</h1>
+        <h6>{props.data.author}</h6>
+        </div>
     )
 } 
 
