@@ -9,7 +9,7 @@ class App extends Component {
     this.state = {
       quotes: [],
       colors: ['#000033', '#696969', 
-        '#c0ffee', '#b7410e', '#4d3c63'],
+        '#b7410e', '#4d3c63', '#ccccff'],
       quoteIndex: 1,
       colorIndex: 1,
       isloaded: false
@@ -44,16 +44,18 @@ class App extends Component {
     if(isloaded){
     return (
       <div className="App" style={{backgroundColor: `${colors[colorIndex]}`}}>
-        <Card data={quotes[quoteIndex]} colors={colors[colorIndex]} />
-        <button onClick={this.handleNew}>click meh</button>
+        <div className="container">
+          <Card data={quotes[quoteIndex]} colors={colors[colorIndex]} />
+          <button onClick={this.handleNew} style={{color: `${colors[colorIndex]}`}}>New Quote</button>  
+          </div>
+            
       </div>
     );
-  } else {
-    return(
-      <h1>hi</h1>
-    )
   }
-}
-}
+  return(<p>Loading....</p>)
+} 
+  }
+  
+
 
 export default App;
